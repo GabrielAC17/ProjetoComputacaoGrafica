@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Associação 3D</title>
+<title>Associaï¿½ï¿½o 3D</title>
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
     
 <script type="text/javascript" src="lib/glMatrix-0.9.5.min.js"></script>
@@ -85,20 +85,16 @@ vec3 point = vec3(uMVMatrixInverse*vec4(eyeVert.xyz,eyeVert.w));
 
 if (offscreen == 0) {
 
-	ambientLight = vec3(1.0,1.0,1.0);
+	ambientLight = vec3(1.0,1.0,1.0);	
 	
-    /*if (lighting == 1) {ambientLight = vec3(1.0,1.0,1.0);}
-    else               {ambientLight = vec3(0.5,0.5,0.5);}*/
-
-	vec3 p = point - pCenter;
-	vec3 mult = p*p;
-	float len = mult.x + mult.y + mult.z;
-
-	//if ( (show == 1) && (len <= (rad*rad) + 10.0) ) {
-    
-    if ( (show == 1) && (point.x >= pMin.x && point.x <= pMax.x)  && (point.y >= pMin.y && point.y <= pMax.y) && (point.z >= pMin.z && point.z <= pMax.z) ) {
+	float raioInit = (point.x - pCenter.x)*(point.x - pCenter.x) + (point.y - pCenter.y)*(point.y - pCenter.y);
+	float raioFinal = raioInit / (pCenter.x + pCenter.y +  pCenter.z);	
+	
+	if((show == 1) && ((pCenter.x + raioFinal) >= pMin.x && (pCenter.x + raioFinal) <= pMax.x) &&((pCenter.y + raioFinal) >= pMin.y && (pCenter.y + raioFinal) <= pMax.y) && ((pCenter.z + raioFinal) >= pMin.z && (pCenter.z + raioFinal) <= pMax.z )){
 		aux = vec4(1.0, 1.0, 1.0, 1.0);
-    }
+	}
+		
+    //}
     else {
 		if (textureoff == 1) {aux = vec4(1.0, 1.0, 1.0, 1.0);}
 		else 				 {aux = color;}
@@ -183,7 +179,7 @@ rot.y = mesh.view.y;
 rot.z = mesh.view.z;
 rot.s = mesh.view.s;
 
-mesh.print = "Onça Wauja";
+mesh.print = "Onï¿½a Wauja";
 
 }
 
@@ -788,7 +784,7 @@ window.onresize = function() {
   <tr>
   <td width="160px">
   <ul class="sidebar" id="bar">
-    <li class="sidebar-main" id="root-li" onclick="editMultimedia(0);">Onça Wuaja</li>
+    <li class="sidebar-main" id="root-li" onclick="editMultimedia(0);">Onï¿½a Wuaja</li>
   </ul>
   </td>
 
@@ -845,7 +841,7 @@ window.onresize = function() {
   <td width="60px">
   <div class="toolbar">
   
-    <div class="button" id="select" onclick="roiSelection();" style="width:50px; height:50px; margin:5px; background-image:url(edit-buttons/select.png);" onmousedown="this.style.backgroundImage='url(edit-buttons/select-down.png)'" onmouseup="this.style.backgroundImage='url(edit-buttons/select-over.png)'"><!-- onmouseout="this.style.backgroundImage='url(edit-buttons/select.png)'" onmouseover="this.style.backgroundImage='url(edit-buttons/select-over.png)'"--></div>
+    <div class="button" id="select" onclick="roiSelection();" style="width:50px; height:50px; margin:5px; background-image:url(edit-buttons/select.png);" onmousedown="this.style.backgroundImage='url(edit-buttons/select.png)'" onmouseup="this.style.backgroundImage='url(edit-buttons/select-over.png)'"><!-- onmouseout="this.style.backgroundImage='url(edit-buttons/select.png)'" onmouseover="this.style.backgroundImage='url(edit-buttons/select-over.png)'"--></div>
     <div class="button" onclick="accept();"       style="margin:8px; background-image:url(edit-buttons/accept.png);" onmouseover="this.style.backgroundImage='url(edit-buttons/accept-over.png)'" onmouseout="this.style.backgroundImage='url(edit-buttons/accept.png)'" onmousedown="this.style.backgroundImage='url(edit-buttons/accept-down.png)'" onmouseup="this.style.backgroundImage='url(edit-buttons/accept-over.png)'"></div>
     <div class="button" style="background-image:url(edit-buttons/zoom-in.png);"    onclick="eventZoomIn();"   onmouseover="this.style.backgroundImage='url(edit-buttons/zoom-in-over.png)'" onmouseout="this.style.backgroundImage='url(edit-buttons/zoom-in.png)'" onmousedown="this.style.backgroundImage='url(edit-buttons/zoom-in-down.png)'" onmouseup="this.style.backgroundImage='url(edit-buttons/zoom-in-over.png)'"></div>
     <div class="button" style="background-image:url(edit-buttons/zoom-out.png);"   onclick="eventZoomOut();"  onmouseover="this.style.backgroundImage='url(edit-buttons/zoom-out-over.png)'" onmouseout="this.style.backgroundImage='url(edit-buttons/zoom-out.png)'" onmousedown="this.style.backgroundImage='url(edit-buttons/zoom-out-down.png)'" onmouseup="this.style.backgroundImage='url(edit-buttons/zoom-out-over.png)'"></div>
@@ -862,7 +858,7 @@ window.onresize = function() {
   <div id="divCanvas">
     <canvas id="canvas3D"></canvas>
     <div id="canvas2D"></div>
-    <!-- <canvas id="temp-canvas"></canvas> -->
+    <!-- <canvas id="temp-canvas"></dasdasdasdasdasd> -->
   </div>
   </td>
   

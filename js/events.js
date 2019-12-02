@@ -194,6 +194,10 @@ function handleMouseDown(event) {
 mouseDown = true;
 lastMouseX = event.clientX;
 lastMouseY = event.clientY;
+//circulo
+startX = parseInt(e.clientX - offsetX);
+startY = parseInt(e.clientY - offsetY);
+isDown = true;
 }
 
 function handleMouseUp(event) {

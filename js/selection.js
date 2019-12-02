@@ -300,7 +300,9 @@ canvas2D.onmousemove = function (e) {
     	element.style.width = Math.abs(mouse.x - mouse.startX) + 'px';
     	element.style.height = Math.abs(mouse.y - mouse.startY) + 'px';
     	element.style.left = (mouse.x - mouse.startX < 0) ? mouse.x-570 + 'px' : mouse.startX-570 + 'px';
-    	element.style.top = (mouse.y - mouse.startY < 0) ? mouse.y + 'px' : mouse.startY + 'px';
+		element.style.top = (mouse.y - mouse.startY < 0) ? mouse.y + 'px' : mouse.startY + 'px';				
+		//console.log(element);
+		//drawOval(mouseX, mouseY);
     }
 }
 
