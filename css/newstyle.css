@@ -1,0 +1,44 @@
+.sidenav{
+    height: 100%;
+    width: fit-content;
+    position: fixed;
+    z-index: 1;
+}
+
+.sidebar-main{
+    background-color: #494ca2 !important;
+}
+
+.drag-window-image {
+    opacity: 1;
+    transition: opacity .5s linear;
+    border: 1.5px solid #494ca2;
+    }
+
+.drag-window-image.hide{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.drag-window-video {
+    opacity: 1;
+    transition: opacity .5s linear;
+    border: 1.5px solid #494ca2;
+    }
+
+.drag-window-video.hide{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.drag-window-text {
+    opacity: 1;
+    transition: opacity .5s linear;
+    border: 1.5px solid #494ca2;
+    }
+
+.drag-window-text.hide{
+    opacity: 0;
+    pointer-events: none;
+    border: 1.5px solid #494ca2;
+}

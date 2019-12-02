@@ -1,0 +1,9 @@
+Alterações:
+	- Correção do bug de scroll vertical (arquivos jsp inserção de div "sidenav" na linha 571);
+	- Mudança de cores para a seguinte paleta: https://colorhunt.co/palette/159621 (viewerm.css todas as linhas com a cor #494ca2);
+	- Correção no bug de background nos eventos de clique (arquivo newstyle.css)
+	- Correção de video aparecendo em cima de informação (alteração na função createWinVideo do arquivo presentation.js)
+	- Adição de ação para fechar todas as informações (alteracao nos metodos openRoi() closeRoi() e closeAllRoi() no arquivo presentation.js)
+	- Adição de efeito fade para mostrar informações (arquivo newstyle.css)
+	- Ressaltado o titulo da obra (alterações nos aquivos jsp linha 3)
+	- Background das informações (viewerm.css)

@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Apresentação Multimídia</title>
+<title>ApresentaÃ§Ã£o MultimÃ­dia</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
 <script type="text/javascript" src="lib/glMatrix-0.9.5.min.js"></script>
@@ -11,6 +11,8 @@
 <script type="text/javascript" src="js/presentation.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/viewerm.css">
+<link rel="stylesheet" type="text/css" href="css/newstyle.css">
+
 
 <script id="shader-fs" type="x-shader/x-fragment">
 #ifdef GL_ES
@@ -566,7 +568,9 @@ window.open(image, 'image.png');
 <div id="divLoading" class="loading"></div>
 
 <div id="divScreen" style="display: none;">
+	<div class="sidenav">
 
+	
   <table style="width:100%;">
   <tr>
   <td width="160px"><ul class="sidebar" id="sBar"></ul></td>
@@ -580,7 +584,7 @@ window.open(image, 'image.png');
   
   <div class="toolbar">
     <div class="options"><h1>&#9776; Options</h1></div>
-    <table style="width:90%;">
+    <table>
     <tr>
     <td width="160px"><div class="options-back"></div></td>
     <td style="padding-left:10px;"><div class="button" style="background-image:url(edit-buttons/zoom-in.png);"    onclick="eventZoomIn();"   onmouseover="this.style.backgroundImage='url(edit-buttons/zoom-in-over.png)'" onmouseout="this.style.backgroundImage='url(edit-buttons/zoom-in.png)'" onmousedown="this.style.backgroundImage='url(edit-buttons/zoom-in-down.png)'" onmouseup="this.style.backgroundImage='url(edit-buttons/zoom-in-over.png)'"></div></td>
@@ -597,6 +601,7 @@ window.open(image, 'image.png');
     </tr>
     </table>
   </div>
+</div>
   <!--
   <div style="background-color:#1abc9c; position:fixed; bottom:0px; right: 0px; z-index:1004; padding:10px; color:#fff; font-size: 16px; font-weight: normal;">
     <div> Far: <span id="slider-value">value</span></div>

@@ -7,10 +7,10 @@ body {
 
 .drag-window-text, .drag-window-image, .drag-window-video {
   z-index: 1000;
-  background-color: #ffffff;
+  background-color: #333333 /*#ffffff*/;
   /*cursor:move;*/
   position:absolute;
-  display:none;
+  /* display:none; */
 }
 
 .drag-window-text {
@@ -29,7 +29,7 @@ body {
 }
 
 .title-bar {
-  background: #2a88e0; /*#1abc9c;*/
+  background: #494ca2; /*#1abc9c;*/
   cursor: move;
   height: 26px;
 }
@@ -47,7 +47,7 @@ body {
   margin: auto;
   padding: 10px;
   font-size: 14px;
-  color: #333333;
+  color: white /*#333333*/;
 }
 
 .main-image {
@@ -104,7 +104,7 @@ body {
   height: 0; 
   border-top: 12px solid transparent;
   border-bottom: 12px solid transparent;
-  border-left: 12px solid #2a88e0; /*#1abc9c;*/
+  border-left: 12px solid #494ca2; /*#1abc9c;*/
   cursor: pointer;
 }
 
@@ -112,7 +112,7 @@ body {
   width: 0px; 
   border-top: 12px solid transparent;
   border-bottom: 12px solid transparent; 
-  border-right:12px solid #2a88e0; /*#1abc9c;*/
+  border-right:12px solid #494ca2; /*#1abc9c;*/
   cursor: pointer;
 }
 
@@ -122,12 +122,12 @@ body {
 
 .sidebar {
   list-style-type:none;
-  background-color: #2a88e0; /*#1abc9c;*/
+  background-color: #494ca2; /*#1abc9c;*/
   width:160px;
   height:100%;
   top:0;
   bottom:0;
-  text-align:left;
+  text-align: center /*left*/;
   position: absolute;
   margin: 0;
   padding: 0;
@@ -138,16 +138,20 @@ body {
 .sidebar li {
   text-indent: 10px;
   line-height: 40px;
+  background-color: #494ca2 !important;
   /*transition:0.5s ease;*/
 }
 .sidebar li:hover {
-  background-color: #777777 !important;
+  background-color: #c6cbef !important;
+  color: #494ca2;
+  font-weight: bold;
   cursor:pointer;
 }
 .sidebar > .sidebar-main {
   height: 60px;
   font-size: 1.2vw;
   line-height: 60px;
+ background-color: #434594 !important;
 }
 
 #divCanvas {
@@ -167,7 +171,7 @@ body {
   -webkit-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  background-color: #2a88e0; /*#1abc9c;*/
+  background-color: #494ca2; /*#1abc9c;*/
   position:fixed;
   bottom: 0px;
   left: -590px;
@@ -193,7 +197,7 @@ body {
   left:0;
   right: 0px;
   z-index:1001;
-  background-color: #2a88e0; /*#1abc9c;*/
+  background-color: #494ca2; /*#1abc9c;*/
   width:160px;
   height:60px;
 }
@@ -208,7 +212,7 @@ body {
   position:relative;
   width:160px;
   height:60px;
-  background-color: #2a88e0; /*#1abc9c;*/
+  background-color: #494ca2; /*#1abc9c;*/
 }
 
 .button {
@@ -219,10 +223,11 @@ body {
   width: 40px;
   cursor: pointer;
   margin: auto;
-  border: 1px solid #2a88e0; /*#1abc9c;*/
+  border: 1px solid #494ca2; /*#1abc9c;*/
 }
 .button:hover {
   border: 1px solid white;
+  background-color: #c6cbef;
 }
 
 table {

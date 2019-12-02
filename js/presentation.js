@@ -31,7 +31,7 @@ roiList[roi] = {
 function nl2br(s) { return s.split(/\r?\n/).join("<br>"); }
 
 function createPresentation(xml) {
-	
+
 var xmlDoc = xml.responseXML;
 var roi = xmlDoc.getElementsByTagName("roi");
 
@@ -131,10 +131,12 @@ function createWinText(r) {
 var roi = r;
 
 var win = document.createElement("div");
-win.className = 'drag-window-text';
+win.className = 'drag-window-text hide';
+// win.className = '';
 win.id = roiList[roi].winDescription;
 win.style.left = window.innerWidth-400-5; // window width
 win.style.top = 270+10; // window height
+// win.style.display = "block"; // window height
 
 var bar = document.createElement("div");
 bar.className = 'title-bar';
@@ -172,10 +174,10 @@ function createWinVideo(r) {
 var roi = r;
 
 var win = document.createElement("div");
-win.className = 'drag-window-video';
+win.className = 'drag-window-video hide';
 win.id = roiList[roi].winVideo;
-win.style.left = window.innerWidth-400-5 +60;
-win.style.top = 270+10 +55;
+win.style.left = "12.2vw";
+win.style.top = 5;
 
 var bar = document.createElement("div");
 bar.className = 'title-bar';
@@ -214,7 +216,7 @@ function createWinImage(r) {
 var roi = r;
 
 var win = document.createElement("div");
-win.className = 'drag-window-image';
+win.className = 'drag-window-image hide';
 win.id = roiList[roi].winImage;
 win.style.left = window.innerWidth-400-5; // window width
 win.style.top = 5;
@@ -325,64 +327,99 @@ if (roiList[roi].right < roiList[roi].numImages-1) {
 function closeRoi(roi) {
 
 if (roiList[roi].enableDescription)
-	document.getElementById(roiList[roi].winDescription).style.display = 'none';
+	document.getElementById(roiList[roi].winDescription).classList.add("hide");
 			
 if (roiList[roi].enableImage)
-	document.getElementById(roiList[roi].winImage).style.display = 'none';
+	document.getElementById(roiList[roi].winImage).classList.add("hide");
 	
 if (roiList[roi].enableVideo)
-	document.getElementById(roiList[roi].winVideo).style.display = 'none';
+	document.getElementById(roiList[roi].winVideo).classList.add("hide");
+
+	// if (roiList[roi].enableDescription)
+// 	document.getElementById(roiList[roi].winDescription).style.display = 'none';
+			
+// if (roiList[roi].enableImage)
+// 	document.getElementById(roiList[roi].winImage).style.display = 'none';
+	
+// if (roiList[roi].enableVideo)
+// 	document.getElementById(roiList[roi].winVideo).style.display = 'none';
 		
 document.getElementById(roiList[roi].sbar).style.backgroundColor = '#2a88e0';
 }
 
 function openRoi(roi) {
 
+// if (roiList[roi].enableDescription)
+// 	document.getElementById(roiList[roi].winDescription).style.display = 'block';
+	
+// if (roiList[roi].enableImage)
+// 	document.getElementById(roiList[roi].winImage).style.display = 'block';
+	
+// if (roiList[roi].enableVideo)
+// 	document.getElementById(roiList[roi].winVideo).style.display = 'block';
+
+
 if (roiList[roi].enableDescription)
-	document.getElementById(roiList[roi].winDescription).style.display = 'block';
+	document.getElementById(roiList[roi].winDescription).classList.remove("hide");
 	
 if (roiList[roi].enableImage)
-	document.getElementById(roiList[roi].winImage).style.display = 'block';
+	document.getElementById(roiList[roi].winImage).classList.remove("hide");
 	
 if (roiList[roi].enableVideo)
-	document.getElementById(roiList[roi].winVideo).style.display = 'block';
-		
+	document.getElementById(roiList[roi].winVideo).classList.remove("hide");
+
 document.getElementById(roiList[roi].sbar).style.backgroundColor = '#333333';
 }
 
+function closeAllRoi(){
+	for(var i = 0; i < roiList.length ; i++){
+		closeRoi(i);
+	}
+}
+
+var showingInfo = -1;
+
 function displayRoi(roi){
 
-if (currentRoi >= 0) {
-	closeRoi(currentRoi);
-}
-openRoi(roi);
-currentRoi = roi;
+	showingInfo *= -1;
 
-//move to view
-if (slerp.status == false) {
-	slerp.t = 0.0;
-	dest.x = roiList[roi].view.x;
-	dest.y = roiList[roi].view.y;
-	dest.z = roiList[roi].view.z;
-	dest.s = roiList[roi].view.s;
-	slerp.status = true;
-}
+	if(showingInfo == 1)
+	{
+		if (currentRoi >= 0) {
+			closeRoi(currentRoi);
+		}
+		openRoi(roi);
+		currentRoi = roi;
 
-//show colored roi
-show = 0;
-if (roi > 0) {
-	bb.min.x = round(roiList[roi].pMin.x);
-	bb.min.y = round(roiList[roi].pMin.y);
-	bb.min.z = round(roiList[roi].pMin.z);
-	
-	bb.max.x = round(roiList[roi].pMax.x);
-	bb.max.y = round(roiList[roi].pMax.y);
-	bb.max.z = round(roiList[roi].pMax.z);
-	
-	show = 1;
-	blink.start = new Date().getTime();
-	blink.status = 1;
-}
+		//move to view
+		if (slerp.status == false) {
+			slerp.t = 0.0;
+			dest.x = roiList[roi].view.x;
+			dest.y = roiList[roi].view.y;
+			dest.z = roiList[roi].view.z;
+			dest.s = roiList[roi].view.s;
+			slerp.status = true;
+		}
+
+		//show colored roi
+		show = 0;
+		if (roi > 0) {
+			bb.min.x = round(roiList[roi].pMin.x);
+			bb.min.y = round(roiList[roi].pMin.y);
+			bb.min.z = round(roiList[roi].pMin.z);
+			
+			bb.max.x = round(roiList[roi].pMax.x);
+			bb.max.y = round(roiList[roi].pMax.y);
+			bb.max.z = round(roiList[roi].pMax.z);
+			
+			show = 1;
+			blink.start = new Date().getTime();
+			blink.status = 1;
+		}
+	}
+	else{
+		closeAllRoi();
+	}
 }
 
 var slerp = {
