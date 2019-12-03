@@ -5,6 +5,10 @@ var facesByWedge;
 var facesRoi;
 var indexBuffer;
 var indices;
+var xesque;
+var yesque;
+var xesquex;
+var yesquey;
 
 function createAdjRoi() {
 
@@ -224,6 +228,7 @@ return false;
 /* ---------------------------------- 2D selection ---------------------------------- */
 
 selection = {
+	toggle: true,
 	status: false,
 	mode: 0,
 	count:0
@@ -253,8 +258,11 @@ else if (mouse.startX > mouse.x && mouse.startY < mouse.y) {
     rectangle.start.x = mouse.x;      rectangle.start.y = mouse.startY;
 }
 
-rectangle.width  = Math.abs(mouse.startX - mouse.x) + 1;
-rectangle.height = Math.abs(mouse.startY - mouse.y) + 1;
+	if(selection.toggle){	
+		rectangle.width  = Math.abs(mouse.startX - mouse.x) + 1;
+		rectangle.height = Math.abs(mouse.startY - mouse.y) + 1;
+	}
+	
 console.log("start = " + rectangle.start.x + ", " + rectangle.start.y + " width = " + rectangle.width + " height = " + rectangle.height);
 }
 
@@ -278,6 +286,21 @@ else {
     document.getElementById("select").style.backgroundImage = 'url(edit-buttons/select.png)';
 }
 
+}
+
+function toggleRoi(){
+	selection.toggle = !selection.toggle;
+	if(selection.toggle){
+		document.getElementById("toggle_roi").style.backgroundImage = 'url(edit-buttons/remove.png)';
+		console.log("true");
+	}
+	else{
+		document.getElementById("toggle_roi").style.backgroundImage = 'url(edit-buttons/remove3png)';
+		
+		rectangle.width  = 0;
+		rectangle.height = 0;
+		console.log("false");
+	}
 }
 
 function initSelection(canvas2D) {

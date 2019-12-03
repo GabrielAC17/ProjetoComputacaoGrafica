@@ -791,6 +791,8 @@ window.onresize = function() {
     <li class="sidebar-main" id="root-li" onclick="editMultimedia(0);">Onça Wuaja</li>
   </ul>
   </td>
+  
+  	
 
   <td width="350px">
   <div class="multimedia-wrap">
@@ -844,7 +846,8 @@ window.onresize = function() {
   
   <td width="60px">
   <div class="toolbar">
-  
+
+	<div class="button" id="toggle_roi" onclick="toggleRoi();" style="width:50px; height:50px; margin:5px; background-image:url(edit-buttons/remove.png);"  onmouseup="this.style.backgroundImage='url(edit-buttons/remove3.png)'"><!-- onmouseout="this.style.backgroundImage='url(edit-buttons/select.png)'" onmouseover="this.style.backgroundImage='url(edit-buttons/select-over.png)'"--></div>
     <div class="button" id="select" onclick="roiSelection();" style="width:50px; height:50px; margin:5px; background-image:url(edit-buttons/select.png);" onmousedown="this.style.backgroundImage='url(edit-buttons/select-down.png)'" onmouseup="this.style.backgroundImage='url(edit-buttons/select-over.png)'"><!-- onmouseout="this.style.backgroundImage='url(edit-buttons/select.png)'" onmouseover="this.style.backgroundImage='url(edit-buttons/select-over.png)'"--></div>
     <div class="button" onclick="accept();"       style="margin:8px; background-image:url(edit-buttons/accept.png);" onmouseover="this.style.backgroundImage='url(edit-buttons/accept-over.png)'" onmouseout="this.style.backgroundImage='url(edit-buttons/accept.png)'" onmousedown="this.style.backgroundImage='url(edit-buttons/accept-down.png)'" onmouseup="this.style.backgroundImage='url(edit-buttons/accept-over.png)'"></div>
     <div class="button" style="background-image:url(edit-buttons/zoom-in.png);"    onclick="eventZoomIn();"   onmouseover="this.style.backgroundImage='url(edit-buttons/zoom-in-over.png)'" onmouseout="this.style.backgroundImage='url(edit-buttons/zoom-in.png)'" onmousedown="this.style.backgroundImage='url(edit-buttons/zoom-in-down.png)'" onmouseup="this.style.backgroundImage='url(edit-buttons/zoom-in-over.png)'"></div>
@@ -871,5 +874,7 @@ window.onresize = function() {
   <div id="preview" class="preview-image"></div>
   <canvas id="canvas-2d" style="z-index:1000; background-color:white;"></canvas>
 </div> 
+
+
 </body>
 </html>
