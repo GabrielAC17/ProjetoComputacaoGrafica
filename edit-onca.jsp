@@ -1,8 +1,21 @@
 <html>
+<<<<<<< HEAD
 <head>
 <title>Associaï¿½ï¿½o 3D</title>
+=======
+    <head>
+<title>Associação 3D</title>
+>>>>>>> refs/heads/BranchRicardoGiovanni
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
     
+<script
+			  src="https://code.jquery.com/jquery-3.4.1.js"
+			  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+			  crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+		
+
 <script type="text/javascript" src="lib/glMatrix-0.9.5.min.js"></script>
 <script type="text/javascript" src="lib/webgl-utils.js"></script>
 
@@ -747,7 +760,7 @@ document.getElementById("divScreen").setAttribute("style" ,"display: block");
 
 function adjustCanvas() {
 
-var width = window.innerWidth - (60+160+350); //570
+var width = window.innerWidth;// - (60+160+350); //570
 var height = window.innerHeight;
 
 var canvas = document.getElementById("canvas3D");
@@ -771,7 +784,174 @@ window.onresize = function() {
     adjustCanvas();
 };
 </script>
+    </head>
+    <body>
+        <!-- http://preloaders.net/en/circular -->
+        <div id="divLoading" class="loading"></div>
+        <div id="divScreen" style="display: none">
+            <div class="title" style="display: flex;">
+                <h1>Onça Wuaja</h1>
+            </div>
+            <div class="toolbar">
+                <div class="button" id="select" onclick="roiSelection();" style="background-image:url(edit-buttons/select.png);"       onmousedown="this.style.backgroundImage='url(edit-buttons/select-down.png)'" onmouseup="this.style.backgroundImage='url(edit-buttons/select-over.png)'"></div>
+                <div class="button" onclick="accept();"       style="background-image:url(edit-buttons/accept.png);" onmouseover="this.style.backgroundImage='url(edit-buttons/accept-over.png)'" onmouseout="this.style.backgroundImage='url(edit-buttons/accept.png)'" onmousedown="this.style.backgroundImage='url(edit-buttons/accept-down.png)'" onmouseup="this.style.backgroundImage='url(edit-buttons/accept-over.png)'"></div>
+                <div class="button" style="background-image:url(edit-buttons/zoom-in.png);"    onclick="eventZoomIn();"   onmouseover="this.style.backgroundImage='url(edit-buttons/zoom-in-over.png)'" onmouseout="this.style.backgroundImage='url(edit-buttons/zoom-in.png)'" onmousedown="this.style.backgroundImage='url(edit-buttons/zoom-in-down.png)'" onmouseup="this.style.backgroundImage='url(edit-buttons/zoom-in-over.png)'"></div>
+                <div class="button" style="background-image:url(edit-buttons/zoom-out.png);"   onclick="eventZoomOut();"  onmouseover="this.style.backgroundImage='url(edit-buttons/zoom-out-over.png)'" onmouseout="this.style.backgroundImage='url(edit-buttons/zoom-out.png)'" onmousedown="this.style.backgroundImage='url(edit-buttons/zoom-out-down.png)'" onmouseup="this.style.backgroundImage='url(edit-buttons/zoom-out-over.png)'"></div>
+                <div class="button" style="background-image:url(edit-buttons/texture.png);"    onclick="eventTexture();"  onmouseover="this.style.backgroundImage='url(edit-buttons/texture-over.png)'" onmouseout="this.style.backgroundImage='url(edit-buttons/texture.png)'" onmousedown="this.style.backgroundImage='url(edit-buttons/texture-down.png)'" onmouseup="this.style.backgroundImage='url(edit-buttons/texture-over.png)'"></div>
+                <div class="button" style="background-image:url(edit-buttons/turn-left.png);"  onclick="eventRotLeft();"  onmouseover="this.style.backgroundImage='url(edit-buttons/turn-left-over.png)'"       onmouseout="this.style.backgroundImage='url(edit-buttons/turn-left.png)'" onmousedown="this.style.backgroundImage='url(edit-buttons/turn-left-down.png)'" onmouseup="this.style.backgroundImage='url(edit-buttons/turn-left-over.png)'"></div>
+                <div class="button" style="background-image:url(edit-buttons/turn-right.png);" onclick="eventRotRight();" onmouseover="this.style.backgroundImage='url(edit-buttons/turn-right-over.png)'" onmouseout="this.style.backgroundImage='url(edit-buttons/turn-right.png)'" onmousedown="this.style.backgroundImage='url(edit-buttons/turn-right-down.png)'" onmouseup="this.style.backgroundImage='url(edit-buttons/turn-right-over.png)'"></div>
+                <div class="button" style="background-image:url(edit-buttons/turn-up.png);"    onclick="eventRotUp();"    onmouseover="this.style.backgroundImage='url(edit-buttons/turn-up-over.png)'" onmouseout="this.style.backgroundImage='url(edit-buttons/turn-up.png)'" onmousedown="this.style.backgroundImage='url(edit-buttons/turn-up-down.png)'" onmouseup="this.style.backgroundImage='url(edit-buttons/turn-up-over.png)'"></div>
+                <div class="button" style="background-image:url(edit-buttons/turn-down.png);"  onclick="eventRotDown();"  onmouseover="this.style.backgroundImage='url(edit-buttons/turn-down-over.png)'" onmouseout="this.style.backgroundImage='url(edit-buttons/turn-down.png)'" onmousedown="this.style.backgroundImage='url(edit-buttons/turn-down-down.png)'" onmouseup="this.style.backgroundImage='url(edit-buttons/turn-down-over.png)'"></div>
+            </div>
+            <div id="divCanvas">
+                <canvas id="canvas3D"></canvas>
+                <div id="canvas2D"></div>
+            </div>
+	    <div id="roilist">
+		<div class="roip" onclick="editMultimedia(0);"><span>Onça Wuaja</span></div>
+            </div>
+	    <div id="salveAll">
+		<div class="roip" onclick="save()"><span>Salvar</span></div>
+	    </div>
+            <div id="popup">
+		<div style="position: relative; width: 100%; height: 35px; line-height: 35px; padding: 0px 12px; color: white; background-color: black;margin-bottom: 5px" id="handle-header">		
+			<font style="z-index: 999">Região de Interesse</font>
+			<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000"></div>
+		</div>
+		<input id="titleROI" type="text" placeholder="Digite um título..." style="margin: 6px 12px; width: calc(100% - 24px);" />
+		<hr style="border: none; border-bottom: dashed 1px gray; width: calc(100% - 24px);" />
+                <div class="tab" style="padding: 0px 12px;">
+                    <button class="tablinks" onclick="openTab(event, 'Texto')">Texto</button>
+                    <button class="tablinks" onclick="openTab(event, 'Imagem')">Imagem</button>
+                    <button class="tablinks" onclick="openTab(event, 'Video')">Video</button>
+                </div>
+                <div class="tab" style="height: 300px">
+                    <div id="Texto" class="tabcontent">
+                        <h3>Texto</h3>
+			<textarea id="root-description" placeholder="Escreva o texto aqui." rows="13"
+				style="margin:0!important;"></textarea>
+                    </div>
+                    <div id="Imagem" class="tabcontent">
+                        <h3>Imagem</h3>
+			<div class="file-upload">
+                        	<span>Upload</span>
+                        	<input type="file" class="upload" multiple onchange="handleFiles(this.files)" accept=".png, .jpg, .jpeg"/>
+                        </div>
+                        <div class="list-wrap" id="list-image">
+                        	<table class="list" id="root-image">
+					<tr>
+						<td width="90%"></td>
+						<td width="10%"></td>
+                                        </tr>
+				</table>
+			</div>
+                    </div>
+                    <div id="Video" class="tabcontent">
+                        <h3>Video</h3>
+<form id="form">
+                                    <div class="file-upload">
+                                        <span>Upload</span>  
+                                            <input type="file" class="upload" onchange="handleVideo(this.files)" accept=".mp4"/>
+                                    </div>
+                                </form>
+                                <div class="list-wrap" id="list-video">
+                                    <table class="list" id="video">
+                                        <tr>
+                                            <td width="90%"></td>
+                                            <td width="10%"></td>
+                                        </tr>
+                                        <tr class="row">
+                                            <td class="cell">exemplo</td>
+                                            <td class="cell"><div class="remove" onclick="removeVideo();"></div></td></tr>
+                                    </table>  
+                                </div>
+                    </div>
+                </div>
+		<hr style="border: none; border-bottom: dashed 1px gray; width: calc(100% - 24px);" />
+                <div class="tab" style="padding: 6px 12px;">
+                    <button style="width: 25%; border: solid 1px black;" onclick="closePopup()">Fechar</button>
+			<button style="width: 25%; border: solid 1px black;margin-left: 10px;" onclick="salvarROI();">Salvar</button>	
+                </div>
+            </div>
+        </div>
 
+        <div id="divScreen2" style="display: none;"> <!--divScreen-->            
+            <table>
+                <tr>
+                    <td width="160px">
+                        <ul class="sidebar" id="bar">
+                            <li class="sidebar-main" id="root-li" onclick="editMultimedia(0);">Onça Wuaja</li>
+                        </ul>
+                    </td>
+                    <td width="350px">
+                        <div class="multimedia-wrap">
+                            <div class="panel-wrap" onclick="displayPanel(0);">
+                                <h1>+ Texto</h1>
+                            </div>
+                            <div class="panel-inner closed" id="panel-text">
+                                <textarea id="root-description" placeholder="Escreva o texto aqui."></textarea>
+                            </div>
+                            <div class="panel-wrap" onclick="displayPanel(1);">
+                                <h1>+ Imagem</h1>
+                            </div>
+                            <div class="panel-inner closed" id="panel-image">
+                                <div class="file-upload">
+                                    <span>Upload</span>
+                                    <input type="file" class="upload" multiple onchange="handleFiles(this.files)" accept=".png, .jpg, .jpeg"/>
+                                </div>
+                                <div class="list-wrap" id="list-image">
+                                    <table class="list" id="root-image">
+                                        <tr>
+                                            <td width="90%"></td>
+                                            <td width="10%"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="panel-wrap" onclick="displayPanel(2);">
+                                <h1>+ Video</h1>
+                            </div>
+                            <div class="panel-inner closed" id="panel-video">
+                                <form id="form">
+                                    <div class="file-upload">
+                                        <span>Upload</span>  
+                                            <input type="file" class="upload" onchange="handleVideo(this.files)" accept=".mp4"/>
+                                    </div>
+                                </form>
+                                <div class="list-wrap" id="list-video">
+                                    <table class="list" id="video">
+                                        <tr>
+                                            <td width="90%"></td>
+                                            <td width="10%"></td>
+                                        </tr>
+                                        <tr class="row">
+                                            <td class="cell">exemplo</td>
+                                            <td class="cell"><div class="remove" onclick="removeVideo();"></div></td></tr>
+                                    </table>  
+                                </div>
+                            </div>
+                            <div class="save" onclick="save();">
+                                <span>Salvar</span>
+                            </div> 
+                        </div>
+                    </td>
+                    <td width="60px">
+                        
+                    </td>
+                    <td>
+                        <div id="divCanvas">
+                            <canvas id="canvas3D"></canvas>
+                            <div id="canvas2D"></div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div id="preview" class="preview-image"></div>
+            <canvas id="canvas-2d" style="z-index:1000; background-color:white;"></canvas>
+        </div>
+
+<<<<<<< HEAD
 </head>
 <body>
 
@@ -873,4 +1053,52 @@ window.onresize = function() {
 
 
 </body>
+=======
+<script type="text/javascript">
+dragElement(document.getElementById("popup"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById("handle-header")) {
+    // if present, the header is where you move the DIV from:
+    document.getElementById("handle-header").onmousedown = dragMouseDown;
+  } else {
+    // otherwise, move the DIV from anywhere inside the DIV:
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+
+</script>
+    </body>
+>>>>>>> refs/heads/BranchRicardoGiovanni
 </html>
