@@ -1,5 +1,5 @@
 
-var roiList = [];
+var roiList = new Array;
 var ptRoiList = 0;
 
 function initRoiList() {
@@ -23,6 +23,27 @@ roiList[0] = {
 };
 ptRoiList = 1;
 
+}
+
+function attRoiList() {
+	var roilisthtml = document.getElementById('roilist');
+	while (roilisthtml.firstChild) {
+		roilisthtml.removeChild(roilisthtml.firstChild);
+	}	
+	for(var i = 0; i < roiList.length; i++) {
+		var item = roiList[i];
+		var listitem = document.createElement('div');
+		listitem.className = "roip";
+		(function(i) {
+			listitem.onclick = function() {
+				editMultimedia(i);		
+			}
+		})(i, listitem);
+		var span = document.createElement('span');	
+		span.innerHTML = item.title;	
+		listitem.appendChild(span);
+		roilisthtml.appendChild(listitem)		
+	};
 }
 
 function addRoiList() {
@@ -60,6 +81,15 @@ roiList[ptRoiList] = {
 };
 //ptRoiList++;
 
+}
+
+function salvarROI() {
+	var roi = roiList[edition.current];	
+	roi.title = document.getElementById("titleROI").value;	
+	roi.description = document.getElementById("root-description").value;	
+	//save();	
+closePopup();
+attRoiList();
 }
 
 function fillRoiList() {
@@ -171,6 +201,7 @@ xhr.send(form);
 }
 
 function savePresentation() {
+closePopup();
 fillRoiList();
 sendPresentation();
 sendFiles();
@@ -217,6 +248,9 @@ input.onchange = function(){ addEdition(); };
 
 li.appendChild(input);
 bar.appendChild(li);
+    
+edition.current = edition.next = roi;
+    editPopup();
 }
 
 function addEdition() {
@@ -306,13 +340,13 @@ for (var i=0; i<3; i++) {
 	}
 }
 
-var inputDescription = document.getElementById(roiList[roi].inputDescription);
-inputDescription.setAttribute("style", "display:none;");
-var inputImage = document.getElementById(roiList[roi].inputImage);
-inputImage.setAttribute("style", "display:none;");
+//var inputDescription = document.getElementById(roiList[roi].inputDescription);
+//inputDescription.setAttribute("style", "display:none;");
+//var inputImage = document.getElementById(roiList[roi].inputImage);
+//inputImage.setAttribute("style", "display:none;");
 
-var table = document.getElementById("video");
-table.style.visibility = 'hidden';
+//var table = document.getElementById("video");
+//table.style.visibility = 'hidden';
 
 document.getElementById(roiList[roi].li).style.backgroundColor = '#777777';
 
@@ -322,7 +356,7 @@ roiList[roi].edit = false;
 
 function openEdition(roi) {
 	
-var inputDescription = document.getElementById(roiList[roi].inputDescription);
+/*var inputDescription = document.getElementById(roiList[roi].inputDescription);
 inputDescription.setAttribute("style", "display:block;");
 var inputImage = document.getElementById(roiList[roi].inputImage);
 inputImage.setAttribute("style", "display:block;");
@@ -336,7 +370,7 @@ if (roiList[roi].video.status == 1) {
 
 document.getElementById("panel-text").classList.toggle('closed');
 roiList[roi].panel[0] = 1;
-
+*/
 roiList[roi].edit = true;
 }
 
@@ -359,10 +393,12 @@ if (slerp.t >= 1.01) {
 }
 
 function editMultimedia(roi) {
-
 // roi was not accepted yet
 if (edition.current != edition.next) /*&& (edition.next == roi)*/
 	return;
+
+console.log(roiList);
+console.log(roi);
 
 // move to view
 if (slerp.status == false) {
@@ -373,6 +409,7 @@ if (slerp.status == false) {
 	dest.s = roiList[roi].view.s;
 	slerp.status = true;
 }
+
 
 document.getElementById(roiList[roi].li).style.backgroundColor = '#2a88e0';
 	
@@ -389,6 +426,7 @@ openEdition(roi);
 
 //roi is the current now
 edition.current = edition.next = roi;
+editPopup();
 }
 
 function displayPanel(p) {
@@ -410,6 +448,36 @@ for (var i=0; i<3; i++) {
 id[p].classList.toggle('closed');
 roiList[roi].panel[p] = 1;
 
+}
+
+function editPopup(roi) {
+    document.getElementById("popup").style.top = '50%';
+    document.getElementById("popup").style.left = '50%';
+    document.getElementById("popup").style.transform = 'translate(-50%, -50%)';
+    document.getElementById("popup").style.display = 'block';
+    var first = document.getElementsByClassName("tablinks")[0];
+    first.click();
+	
+var roi = roiList[edition.current];
+	document.getElementById("titleROI").value = roi.title;	
+	document.getElementById("root-description").value = roi.description;
+}
+function closePopup() {
+    document.getElementById("popup").style.display = 'none';
+closeEdition(edition.current);
+}
+function openTab(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
 }
 
 /* ---------------------------------- Multimedia Video ---------------------------------- */

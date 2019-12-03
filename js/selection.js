@@ -237,8 +237,8 @@ var rectangle = {
 
 function setRectangle(mouse) {
 	
-mouse.x = mouse.x - 570;
-mouse.startX = mouse.startX - 570;
+mouse.x = mouse.x;
+mouse.startX = mouse.startX;
 
 if (mouse.startX > mouse.x && mouse.startY > mouse.y) {
     rectangle.start.x = mouse.x;      rectangle.start.y = mouse.y;
@@ -299,7 +299,7 @@ canvas2D.onmousemove = function (e) {
     if (element !== null) {
     	element.style.width = Math.abs(mouse.x - mouse.startX) + 'px';
     	element.style.height = Math.abs(mouse.y - mouse.startY) + 'px';
-    	element.style.left = (mouse.x - mouse.startX < 0) ? mouse.x-570 + 'px' : mouse.startX-570 + 'px';
+    	element.style.left = (mouse.x - mouse.startX < 0) ? mouse.x + 'px' : mouse.startX + 'px';
     	element.style.top = (mouse.y - mouse.startY < 0) ? mouse.y + 'px' : mouse.startY + 'px';
     }
 }
@@ -324,7 +324,7 @@ canvas2D.onclick = function (e) {
     	console.log("begun." + mouse.startX + " | " + mouse.startY);
     	element = document.createElement('div');
     	element.className = 'rectangle';
-    	element.style.left = mouse.x-570 + 'px';
+    	element.style.left = mouse.x + 'px';
     	element.style.top = mouse.y + 'px';
     	canvas2D.appendChild(element);
     	canvas2D.style.cursor = "crosshair";
