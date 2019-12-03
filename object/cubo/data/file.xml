@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<multimedia>
+<roi id="0">
+<title>N.Sra. das Mercês</title>
+<view s="1" x="0" y="0" z="0"/>
+<pMin x="undefined" y="undefined" z="undefined"/>
+<pMax x="undefined" y="undefined" z="undefined"/>
+<description>A imagem de Nossa Senhora das Mercês, do escultor Antônio Francisco Lisboa, o Aleijadinho, está localizada no Museu de Arte Sacra de Ouro Preto, Minas Gerais. A peça ficou desapacida por décadas e foi recuperada em 1995, em um antiquário de São Paulo.</description>
+<images/>
+<video/>
+</roi>
+<roi id="1">
+<title>Face</title>
+<view s="1" x="-1.2446030555722283e-59" y="-4.978412222288913e-59" z="6.223015277861142e-60"/>
+<pMin x="-40.443077087402344" y="393.24005126953125" z="61.763671875"/>
+<pMax x="1.8346744775772095" y="442.6330261230469" z="86.8270263671875"/>
+<description>A escultura apresenta características formais da obra de Aleijadinho, tais como olhos grandes e amendoados, nariz reto, sobrancelhas arqueadas, boca pequena e queixo em montículo.</description>
+<images/>
+<video/>
+</roi>
+<roi id="2">
+<title>Anjos</title>
+<view s="1" x="-1.2446030555722283e-59" y="-4.978412222288913e-59" z="6.223015277861142e-60"/>
+<pMin x="-177.28065490722656" y="-397.7471618652344" z="-18.219482421875"/>
+<pMax x="204.6265869140625" y="-289.5033874511719" z="146.57672119140625"/>
+<description>Nossa Senhora das Mercês está sobre um globo de nuvens com três cabeças de anjos.</description>
+<images/>
+<video/>
+</roi>
+</multimedia>
